@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `products` (
     `province`         VARCHAR(100)          DEFAULT NULL,
     `traditional_name` VARCHAR(255)          DEFAULT NULL,
     `is_available`     TINYINT(1)   NOT NULL DEFAULT 1,
+    `stock_qty`        INT          NOT NULL DEFAULT 0,
     `show_in_gallery`  TINYINT(1)   NOT NULL DEFAULT 0,
     `created_at`       DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at`       DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -93,6 +94,65 @@ CREATE TABLE IF NOT EXISTS `product_images` (
     `created_at` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     KEY `idx_product_images_product_id` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `product_variants` (
+    `id`             VARCHAR(36)  NOT NULL,
+    `product_id`     VARCHAR(36)  NOT NULL,
+    `size_label`     VARCHAR(100) NOT NULL DEFAULT '',
+    `color_label`    VARCHAR(100) NOT NULL DEFAULT '',
+    `stock_qty`      INT          NOT NULL DEFAULT 0,
+    `price_override` DOUBLE                DEFAULT NULL,
+    `is_active`      TINYINT(1)   NOT NULL DEFAULT 1,
+    `created_at`     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY `idx_product_variants_product_id` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `orders` (
+    `id`                   VARCHAR(36)   NOT NULL,
+    `order_code`           VARCHAR(50)   NOT NULL,
+    `source`               VARCHAR(50)   NOT NULL DEFAULT 'walk_in',
+    `customer_name`        VARCHAR(255)  NOT NULL,
+    `customer_phone`       VARCHAR(50)            DEFAULT NULL,
+    `customer_whatsapp`    VARCHAR(50)            DEFAULT NULL,
+    `customer_institution` VARCHAR(255)           DEFAULT NULL,
+    `handover_date`        DATETIME               DEFAULT NULL,
+    `planned_return_date`  DATETIME               DEFAULT NULL,
+    `actual_return_date`   DATETIME               DEFAULT NULL,
+    `status`               ENUM('pending','confirmed','cancelled') NOT NULL DEFAULT 'pending',
+    `rental_status`        ENUM('booked','handed_over','returned','overdue') NOT NULL DEFAULT 'booked',
+    `payment_status`       ENUM('unpaid','partial','paid') NOT NULL DEFAULT 'unpaid',
+    `total_amount`         DOUBLE        NOT NULL DEFAULT 0,
+    `paid_amount`          DOUBLE        NOT NULL DEFAULT 0,
+    `created_at`           DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`           DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uq_order_code` (`order_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `order_items` (
+    `id`           VARCHAR(36)  NOT NULL,
+    `order_id`     VARCHAR(36)  NOT NULL,
+    `product_id`   VARCHAR(36)           DEFAULT NULL,
+    `variant_id`   VARCHAR(36)           DEFAULT NULL,
+    `product_name` VARCHAR(255) NOT NULL,
+    `category`     VARCHAR(100) NOT NULL DEFAULT '',
+    `size_label`   VARCHAR(100) NOT NULL DEFAULT '',
+    `color_label`  VARCHAR(100) NOT NULL DEFAULT '',
+    `unit_price`   DOUBLE       NOT NULL DEFAULT 0,
+    `quantity`     INT          NOT NULL DEFAULT 1,
+    `subtotal`     DOUBLE       NOT NULL DEFAULT 0,
+    `notes`        TEXT                  DEFAULT NULL,
+    `created_at`   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY `idx_order_items_order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- -----------------------------------------------------------------------------
