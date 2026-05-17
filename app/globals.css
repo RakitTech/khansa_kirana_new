@@ -59,44 +59,71 @@ body {
 
 /* ═══════════════════════════════════════════
    LIGHT THEME — html.light overrides
-   Admin routes are excluded via ThemeProvider
+   Admin routes excluded via ThemeProvider
    ═══════════════════════════════════════════ */
 
+/* ── Base ── */
 html.light body {
   background-color: #f5f0eb !important;
   color: #1a0e08;
 }
 
-/* ── Backgrounds ── */
-html.light .bg-\[\#0c0c0c\]      { background-color: #f5f0eb !important; }
-html.light .bg-black             { background-color: #ede6dd !important; }
-html.light .bg-\[\#121212\]\/50  { background-color: rgba(180,158,142,0.15) !important; }
-html.light .bg-\[\#1a1a1a\]      { background-color: #f5f0eb !important; }
-html.light .bg-white\/5          { background-color: rgba(62,50,43,0.05) !important; }
-html.light .bg-white\/30         { background-color: rgba(62,50,43,0.2) !important; }
-html.light .bg-black\/40         { background-color: rgba(245,240,235,0.9) !important; }
-html.light .bg-black\/80         { background-color: rgba(0,0,0,0.5) !important; }
-html.light .bg-black\/95         { background-color: rgba(245,240,235,0.98) !important; }
+/* ── Page & section backgrounds ── */
+html.light .bg-\[\#0c0c0c\]       { background-color: #f5f0eb !important; }
+html.light .bg-black              { background-color: #ede6dd !important; }
+html.light .bg-\[\#121212\]\/50   { background-color: rgba(180,158,142,0.15) !important; }
+html.light .bg-\[\#1a1a1a\]       { background-color: #f0ebe4 !important; }
+html.light .bg-white\/5           { background-color: rgba(62,50,43,0.06) !important; }
+html.light .bg-white\/30          { background-color: rgba(62,50,43,0.2) !important; }
 
-/* ── Text colors ── */
-html.light .text-white           { color: #1a0e08 !important; }
-html.light .text-gray-200        { color: #2e1e12 !important; }
-html.light .text-gray-300        { color: #4a3628 !important; }
-html.light .text-gray-400        { color: #7a6555 !important; }
-html.light .text-gray-500        { color: #8a7565 !important; }
-html.light .text-gray-600        { color: #9a8575 !important; }
-html.light .text-gray-800        { color: #c0b0a0 !important; }
+/* ── Navigation backgrounds ── */
+html.light .bg-black\/40          { background-color: rgba(245,240,235,0.92) !important; }
+html.light .bg-black\/80          { background-color: rgba(0,0,0,0.5) !important; }
+html.light .bg-black\/95          { background-color: rgba(245,240,235,0.98) !important; }
+
+/* ── Buttons: force readable text on dark brand background ── */
+html.light .bg-brand-dark         { color: #f5f0eb !important; }
+
+/* ── Brand text: darken significantly so readable on cream ──
+     #d2bca8 on #f5f0eb = contrast 1.6:1 (invisible)
+     #5c3d2e on #f5f0eb = contrast 9.9:1 (excellent)            */
+html.light .text-brand-light      { color: #5c3d2e !important; }
+html.light .text-brand-muted      { color: #7a5040 !important; }
+html.light .text-brand-muted\/80  { color: rgba(122,80,64,0.9) !important; }
+
+/* ── Gray text hierarchy (warm-tinted browns) ── */
+html.light .text-white            { color: #1a0e08 !important; }
+html.light .text-gray-200         { color: #2e1e12 !important; }
+html.light .text-gray-300         { color: #3e2e22 !important; }
+html.light .text-gray-400         { color: #6a5545 !important; }
+html.light .text-gray-500         { color: #7a6555 !important; }
+html.light .text-gray-600         { color: #8a7565 !important; }
+html.light .text-gray-800         { color: #b0a090 !important; }
 
 /* ── Borders ── */
-html.light .border-white\/10     { border-color: rgba(62,50,43,0.15) !important; }
-html.light .border-white\/5      { border-color: rgba(62,50,43,0.08) !important; }
+html.light .border-white\/10      { border-color: rgba(62,50,43,0.15) !important; }
+html.light .border-white\/5       { border-color: rgba(62,50,43,0.08) !important; }
 
 /* ── Hover adjustments ── */
-html.light .hover\:bg-white\/10:hover   { background-color: rgba(62,50,43,0.08) !important; }
-html.light .hover\:text-gray-300:hover  { color: #3e2e22 !important; }
+html.light .hover\:bg-white\/10:hover  { background-color: rgba(62,50,43,0.08) !important; }
+html.light .hover\:text-gray-300:hover { color: #3e2e22 !important; }
 
-/* ── Placeholder ── */
-html.light .placeholder\:text-gray-600::placeholder { color: #9a8575 !important; }
+/* ── Input placeholder ── */
+html.light .placeholder\:text-gray-600::placeholder { color: #8a7565 !important; }
+
+/* ── Product & catalog card overlay text:
+     Cards have a permanent dark gradient (from-black/80) over images.
+     Restore original light brand colors so text stays readable.       ── */
+html.light .aspect-\[3\/4\] .absolute.bottom-0 .text-brand-light,
+html.light .aspect-\[3\/4\] .absolute.bottom-0 .text-brand-muted {
+  color: #d2bca8 !important;
+}
+html.light .aspect-\[3\/4\] .absolute.bottom-0 .text-brand-muted {
+  color: #b49e8e !important;
+}
+html.light .aspect-\[3\/4\] .absolute.bottom-0 .text-gray-400 {
+  color: #9ca3af !important;
+}
 
 /* ── Leaflet map ── */
 html.light .leaflet-container { background: #e8e0d8 !important; }
@@ -107,5 +134,5 @@ html.light .map-tooltip {
   box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
 }
 
-/* ── Google Maps embed: remove dark invert filter in light mode ── */
+/* ── Google Maps embed: remove dark invert filter ── */
 html.light #outlet iframe { filter: none !important; }
