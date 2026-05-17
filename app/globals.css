@@ -56,3 +56,56 @@ body {
 .admin-body {
   @apply bg-[#111111] text-white;
 }
+
+/* ═══════════════════════════════════════════
+   LIGHT THEME — html.light overrides
+   Admin routes are excluded via ThemeProvider
+   ═══════════════════════════════════════════ */
+
+html.light body {
+  background-color: #f5f0eb !important;
+  color: #1a0e08;
+}
+
+/* ── Backgrounds ── */
+html.light .bg-\[\#0c0c0c\]      { background-color: #f5f0eb !important; }
+html.light .bg-black             { background-color: #ede6dd !important; }
+html.light .bg-\[\#121212\]\/50  { background-color: rgba(180,158,142,0.15) !important; }
+html.light .bg-\[\#1a1a1a\]      { background-color: #f5f0eb !important; }
+html.light .bg-white\/5          { background-color: rgba(62,50,43,0.05) !important; }
+html.light .bg-white\/30         { background-color: rgba(62,50,43,0.2) !important; }
+html.light .bg-black\/40         { background-color: rgba(245,240,235,0.9) !important; }
+html.light .bg-black\/80         { background-color: rgba(0,0,0,0.5) !important; }
+html.light .bg-black\/95         { background-color: rgba(245,240,235,0.98) !important; }
+
+/* ── Text colors ── */
+html.light .text-white           { color: #1a0e08 !important; }
+html.light .text-gray-200        { color: #2e1e12 !important; }
+html.light .text-gray-300        { color: #4a3628 !important; }
+html.light .text-gray-400        { color: #7a6555 !important; }
+html.light .text-gray-500        { color: #8a7565 !important; }
+html.light .text-gray-600        { color: #9a8575 !important; }
+html.light .text-gray-800        { color: #c0b0a0 !important; }
+
+/* ── Borders ── */
+html.light .border-white\/10     { border-color: rgba(62,50,43,0.15) !important; }
+html.light .border-white\/5      { border-color: rgba(62,50,43,0.08) !important; }
+
+/* ── Hover adjustments ── */
+html.light .hover\:bg-white\/10:hover   { background-color: rgba(62,50,43,0.08) !important; }
+html.light .hover\:text-gray-300:hover  { color: #3e2e22 !important; }
+
+/* ── Placeholder ── */
+html.light .placeholder\:text-gray-600::placeholder { color: #9a8575 !important; }
+
+/* ── Leaflet map ── */
+html.light .leaflet-container { background: #e8e0d8 !important; }
+html.light .map-tooltip {
+  background: rgba(245,240,235,0.96) !important;
+  border-color: rgba(62,50,43,0.2) !important;
+  color: #1a0e08 !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+}
+
+/* ── Google Maps embed: remove dark invert filter in light mode ── */
+html.light #outlet iframe { filter: none !important; }

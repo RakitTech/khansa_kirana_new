@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import type { StoreProfile } from "@/lib/types";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 interface NavbarProps {
   profile?: StoreProfile | null;
@@ -66,7 +67,8 @@ export default function Navbar({ profile }: NavbarProps) {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <a
             href={whatsappUrl}
             target="_blank"
