@@ -276,52 +276,28 @@ export default function CatalogPageClient({ provinces, islands, initialProducts 
         </div>
       )}
 
-      {/* Province Grid */}
+      {/* All Products Grid - Default View */}
       {!selectedProvince && !showMapResults && (
         <div>
           <h2 className="text-xs font-bold tracking-[0.3em] text-gray-500 mb-6">
-            PROVINSI ({filteredProvinces.length})
+            SEMUA PRODUK ({filteredProducts.length})
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-16">
-            {filteredProvinces.map((prov, idx) => (
-              <motion.div
-                key={prov.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.04 }}
-                onClick={() => { setSelectedProvince(prov); setMapSelectedGeo(null); }}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer hover:border-brand-muted/30 transition-colors"
-              >
-                {prov.imageUrl ? (
-                  <img
-                    src={prov.imageUrl}
-                    alt={prov.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-brand-dark/20 to-black" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-[9px] font-bold tracking-[0.3em] text-brand-muted uppercase mb-1">
-                    {islands.find((i) => i.key === prov.islandKey)?.name ?? prov.islandKey}
-                  </p>
-                  <h3 className="font-serif font-bold text-brand-light italic">{prov.name}</h3>
-                  <p className="text-xs text-gray-400 mt-0.5">{prov.costumeName}</p>
-                  {prov.priceFrom > 0 && (
-                    <p className="text-[10px] text-brand-muted mt-1">
-                      Mulai Rp {prov.priceFrom.toLocaleString("id-ID")}
-                    </p>
-                  )}
-                </div>
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="bg-brand-dark/80 rounded-full p-2">
-                    <ChevronRight size={14} className="text-brand-light" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {filteredProducts.map((product, idx) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  idx={idx}
+                  onClick={() => setSelectedProduct(product)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 text-gray-600">
+              <p className="font-serif text-xl italic">Belum ada produk tersedia</p>
+            </div>
+          )}
         </div>
       )}
 
