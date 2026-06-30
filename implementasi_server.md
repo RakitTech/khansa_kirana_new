@@ -1,7 +1,7 @@
 # Implementasi Server Ubuntu - khansa_kirana_new
 
 Dokumen ini dibuat otomatis oleh `auto-github-backup` untuk recovery ketika server mati/down.
-Branch backup saat dokumen ini dibuat: `feat/backup-v11`.
+Branch backup saat dokumen ini dibuat: `feat/backup-v45`.
 
 ## 1. Paket dasar server
 
@@ -18,7 +18,7 @@ sudo npm install -g pm2
 ```bash
 sudo mkdir -p /var/www
 sudo chown -R $USER:$USER /var/www
-git clone -b feat/backup-v11 https://github.com/RakitTech/khansa_kirana_new.git /var/www/khansa_kirana_new
+git clone -b feat/backup-v45 https://github.com/RakitTech/khansa_kirana_new.git /var/www/khansa_kirana_new
 cd /var/www/khansa_kirana_new
 npm ci
 ```
