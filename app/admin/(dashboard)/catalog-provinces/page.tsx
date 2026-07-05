@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Edit2, Trash2, X, ToggleLeft, ToggleRight } from "lucide-react";
 import AdminHeader from "@/components/admin/AdminHeader";
@@ -99,7 +100,7 @@ export default function CatalogProvincesPage() {
             <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               className={`relative group rounded-2xl overflow-hidden border border-white/10 bg-white/5 ${!p.isActive ? "opacity-50" : ""}`}>
               <div className="aspect-[3/4] relative">
-                {p.imageUrl ? <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-gradient-to-br from-brand-dark/20 to-black" />}
+                {p.imageUrl ? <Image src={p.imageUrl} alt={p.name} fill className="object-cover" /> : <div className="w-full h-full bg-gradient-to-br from-brand-dark/20 to-black" />}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p className="text-[9px] font-bold tracking-widest text-brand-muted uppercase mb-1">{islands.find((i) => i.key === p.islandKey)?.name ?? p.islandKey}</p>
