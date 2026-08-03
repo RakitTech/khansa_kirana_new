@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Edit2, Trash2, X, Search, ToggleLeft, ToggleRight, Eye } from "lucide-react";
 import AdminHeader from "@/components/admin/AdminHeader";
@@ -183,9 +184,9 @@ export default function ProductsPage() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 flex-shrink-0">
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white/10 flex-shrink-0">
                           {p.imageUrl ? (
-                            <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover" />
+                            <Image src={p.imageUrl} alt={p.name} fill className="object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-brand-light/30 font-serif">K</div>
                           )}
@@ -334,7 +335,11 @@ export default function ProductsPage() {
               onClick={(e) => e.stopPropagation()}
               className="bg-[#1a1a1a] border border-white/10 rounded-3xl overflow-hidden w-full max-w-md"
             >
-              {viewProduct.imageUrl && <img src={viewProduct.imageUrl} alt={viewProduct.name} className="w-full h-56 object-cover" />}
+              {viewProduct.imageUrl && (
+                <div className="relative w-full h-56">
+                  <Image src={viewProduct.imageUrl} alt={viewProduct.name} fill className="object-cover" />
+                </div>
+              )}
               <div className="p-6">
                 <h3 className="font-serif text-xl font-bold italic text-brand-light mb-1">{viewProduct.name}</h3>
                 <p className="text-xs text-gray-500 mb-4">{viewProduct.traditionalName} — {viewProduct.province}</p>
