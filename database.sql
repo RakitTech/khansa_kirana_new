@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.45, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.46, for Linux (x86_64)
 --
 -- Host: localhost    Database: khansa_collection
 -- ------------------------------------------------------
--- Server version	8.0.45-0ubuntu0.24.04.1
+-- Server version	8.0.46-0ubuntu0.24.04.3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -50,7 +50,7 @@ CREATE TABLE `admin_users` (
 
 LOCK TABLES `admin_users` WRITE;
 /*!40000 ALTER TABLE `admin_users` DISABLE KEYS */;
-INSERT INTO `admin_users` VALUES ('976f3e76-1315-4ff1-8569-43c6a9de36a7','Deanaya@admin.com','Deanaya','super_admin',1,'$2b$12$c0RyxGoSqbZ4EzIPEFz/X.MdVVQi6futF7NR3Lj3KYbjI2yeOL0xC',NULL,'2026-04-26 12:49:47'),('d9912a2c-3bfa-4aad-806a-25a8eb94ffac','admin@admin.com','Super Admin','super_admin',1,'$2b$12$ozEmY/kAg/nT3NQI1bjXl.l.ZJSQwygtPRSFXkrZgB6CSpfK.viHe','2026-05-17 07:01:32','2026-04-18 10:09:48');
+INSERT INTO `admin_users` VALUES ('976f3e76-1315-4ff1-8569-43c6a9de36a7','Deanaya@admin.com','Deanaya','super_admin',1,'$2b$12$c0RyxGoSqbZ4EzIPEFz/X.MdVVQi6futF7NR3Lj3KYbjI2yeOL0xC',NULL,'2026-04-26 12:49:47'),('d9912a2c-3bfa-4aad-806a-25a8eb94ffac','admin@admin.com','Super Admin','super_admin',1,'$2b$12$ozEmY/kAg/nT3NQI1bjXl.l.ZJSQwygtPRSFXkrZgB6CSpfK.viHe','2026-06-16 20:19:11','2026-04-18 10:09:48');
 /*!40000 ALTER TABLE `admin_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,4 +460,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-27 23:00:16
+-- Dump completed on 2026-08-08 23:00:10
